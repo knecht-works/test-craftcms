@@ -1,0 +1,105 @@
+dateModified: 1784717486
+email:
+  fromEmail: hallo@knecht.works
+  fromName: 'Knecht Works'
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  local:
+    hasUrls: true
+    name: Local
+    settings:
+      path: '@webroot/assets/local'
+    type: craft\fs\Local
+    url: '@web/assets/local'
+meta:
+  __names__:
+    0ada2045-64d4-4f11-b361-eba135dab6c5: GB # GB
+    1a1f4c85-de86-4c34-9fb1-f6c0bba5304a: Pages # Pages
+    7bfe9119-221f-4a6f-b450-86b1f81fb4cb: Asset # Asset
+    8a11481b-da87-47ae-9626-e572ab131c0e: Default # Default
+    30abf508-2db1-4a4f-b85a-c706025a2590: 'Knecht Works' # Knecht Works
+    76f4bb16-621b-47e6-a47b-b42a0741bdf4: Richtext # Richtext
+    82dbb425-a898-43e9-a25d-eefafb1fe141: 'SEO Settings' # SEO Settings
+    086104d4-cbc2-4ac3-aba8-706b10fb7576: Images # Images
+    a26b11c0-da8e-418d-8a51-fc5d4411134c: 'Plain Text' # Plain Text
+    b2dc6ff6-cb1f-4eec-8be3-e974fb8b99be: Home # Home
+    da37b1f2-016e-40fc-a6f9-e4dfd7146729: EN # EN
+    ddabeec5-71c9-4636-8871-bf328f2cbba0: 'LLMify Settings' # LLMify Settings
+    e7a19cdd-1559-4d99-baf1-63812a369060: 'Richtext Large' # Richtext Large
+    ea2be7bf-11c5-44f0-8a46-0772ee24e261: DE # DE
+plugins:
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 5.6.0.0
+  co-pilot:
+    edition: standard
+    enabled: true
+    licenseKey: 03QVX3YWFURMRH7072S7DU0N
+    schemaVersion: 1.0.0
+  insights:
+    edition: pro
+    enabled: true
+    licenseKey: IYCHUIPFXYTDFQS638QEPLT9
+    schemaVersion: 1.2.0
+  llmify:
+    edition: standard
+    enabled: true
+    licenseKey: F82G7YFGD7F93LDKLRL1AJ18
+    schemaVersion: 1.2.1
+    settings:
+      apiToken: null
+      autoInjectDiscoveryTag: true
+      autoServeMarkdown: true
+      concurrentRequests: 3
+      enableBotDetection: false
+      enableWebMcp: true
+      excludeClasses:
+        -
+          __assoc__:
+            -
+              - classes
+              - exclude-llmify
+      frontMatterInFullTxt: false
+      headlessMode: false
+      isEnabled: true
+      isRealUrlLlm: false
+      markdownConfig:
+        __assoc__:
+          -
+            - strip_tags
+            - true
+          -
+            - header_style
+            - atx
+          -
+            - remove_nodes
+            - 'img picture style form button input select option svg script nav noscript video audio source'
+      markdownUrlPrefix: ''
+      requestTimeout: 100
+  quick-edit:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: 8FMND7YL29YVQYZZTACYWZEC
+    schemaVersion: 3.0.13
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: pro
+  live: true
+  name: 'Knecht Works'
+  schemaVersion: 5.10.0.0
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  require2fa: false
+  requireEmailVerification: true

@@ -1,0 +1,170 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  be4fe2da-1f0e-4400-8473-e87288f81277:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-07-22T09:30:08+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: ac50237a-3667-46c5-a31d-71c7da591c1a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-07-22T09:42:38+00:00'
+            elementCondition: null
+            heading: Hero
+            type: craft\fieldlayoutelements\Heading
+            uid: ee5e605d-0753-4285-96da-ac5c746bd3f4
+            userCondition: null
+          -
+            dateAdded: '2026-07-22T09:32:13+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: a26b11c0-da8e-418d-8a51-fc5d4411134c # Plain Text
+            handle: headline
+            instructions: null
+            label: Headline
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 87a30e6e-3036-4b17-9cbb-be8132a5c039
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-07-22T09:42:38+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7bfe9119-221f-4a6f-b450-86b1f81fb4cb # Asset
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 649966b2-0648-4fb1-83ce-f79b91de1626
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-07-22T09:42:38+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 76f4bb16-621b-47e6-a47b-b42a0741bdf4 # Richtext
+            handle: introText
+            instructions: null
+            label: 'Intro Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: af83cc48-eb9c-4584-b36a-ab0952be38a6
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-07-22T09:42:38+00:00'
+            elementCondition: null
+            heading: Content
+            type: craft\fieldlayoutelements\Heading
+            uid: 4c740307-dc84-476e-a574-74129910eb8c
+            userCondition: null
+          -
+            dateAdded: '2026-07-22T10:43:07+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: e7a19cdd-1559-4d99-baf1-63812a369060 # Richtext Large
+            handle: content
+            instructions: null
+            label: Content
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 162f969e-2018-42ee-9839-f691e7cd95e9
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 1f7fee94-8cbd-42ff-b59f-13b5fe78e9c5
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-07-22T09:42:38+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 82dbb425-a898-43e9-a25d-eefafb1fe141 # SEO Settings
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5e411f55-4951-4480-88d7-a6b71bd9d702
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-07-22T09:42:38+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: ddabeec5-71c9-4636-8871-bf328f2cbba0 # LLMify Settings
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1aeda733-17c7-499d-9d7c-27273f8d1027
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'SEO Settings'
+        uid: 2891cd73-eab9-4a58-bd19-db371db079a9
+        userCondition: null
+    thumbFieldKey: null
+handle: default
+hasTitleField: true
+icon: null
+name: Default
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

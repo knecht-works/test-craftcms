@@ -1,0 +1,10 @@
+{# Entry Router #}
+{# ---------------------------------------------------------------------- #}
+{% set entryTypeHandle = entry.type.handle %}
+{% set sectionHandle = entry.section.handle %}
+
+ {{ include([
+   '_pages/' ~ sectionHandle ~ '/' ~ entryTypeHandle,
+   '_pages/' ~ sectionHandle ~ '/default',
+   '_pages/errorPages/' ~ entry.slug,
+ ]) }}

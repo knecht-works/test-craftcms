@@ -1,0 +1,9 @@
+baseUrl: $PRIMARY_SITE_URL
+enabled: true
+handle: en
+hasUrls: true
+language: en
+name: EN
+primary: true
+siteGroup: 30abf508-2db1-4a4f-b85a-c706025a2590 # Knecht Works
+sortOrder: 1
