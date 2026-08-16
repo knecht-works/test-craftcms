@@ -1,0 +1,47 @@
+{#
+  Follows the operating system's colour scheme.
+
+  The styleguide kit (kit.css) ships the DARK token set in `:root` and treats
+  light as the opt-in case via the `.kit-light` class, which does nothing but
+  redefine the `--kit-*` custom properties. Because those are inherited, the
+  class works on any ancestor — we put it on <html>.
+
+  `kit-light` is in the markup statically, so a client without JS still gets the
+  readable light theme. The script below only *removes* it when the OS asks for
+  dark. It must stay inline and inside <head>: deferring it would paint the
+  light theme first and flash before switching.
+#}
+<style>
+  /* No-JS / pre-script default, matching the static `kit-light` on <html>. */
+  :root { color-scheme: light; }
+</style>
+<script>
+  (function (root) {
+    'use strict'
+
+    if (!root || typeof window.matchMedia !== 'function') return
+
+    var query = window.matchMedia('(prefers-color-scheme: dark)')
+
+    function apply(isDark) {
+      root.classList.toggle('kit-light', !isDark)
+      // Keep native controls, scrollbars and form widgets in step with the
+      // kit tokens. Inline style wins over the :root rule above.
+      root.style.colorScheme = isDark ? 'dark' : 'light'
+    }
+
+    apply(query.matches)
+
+    // React to the user flipping their OS setting while the page is open.
+    if (typeof query.addEventListener === 'function') {
+      query.addEventListener('change', function (event) {
+        apply(event.matches)
+      })
+    } else if (typeof query.addListener === 'function') {
+      // Safari < 14 and friends.
+      query.addListener(function (event) {
+        apply(event.matches)
+      })
+    }
+  })(document.documentElement)
+</script>
