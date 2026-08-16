@@ -1,2 +1,25 @@
 @import "tailwindcss";
 @source "../../templates";
+
+/* Site header / navigation link colours.
+
+   kit.css paints every link with the brand green via
+   `.kit-body a:not(.kit-button)` (specificity 0,2,1), which beats Tailwind's
+   preflight `a { color: inherit }` (0,0,1) no matter the load order. The header
+   wants plain ink text instead, with the primary colour reserved for the
+   current page, so these rules deliberately sit one class higher (0,3,1) and
+   win regardless of whether kit.css or this bundle loads first.
+
+   Unlayered on purpose: unlayered rules outrank anything in Tailwind's layers.
+
+   `--kit-ink` is the theme-aware "body text" token: #f4f4f5 (white) in dark
+   mode, near-black in light mode. `--kit-accent-strong` is the readable text
+   variant of the primary — it darkens to #527f54 in light mode, where the raw
+   `--kit-accent` lime would wash out on white. */
+.kit-body .site-header a:not(.kit-button) {
+  color: var(--kit-ink);
+}
+
+.kit-body .site-header a[aria-current="page"] {
+  color: var(--kit-accent-strong);
+}
