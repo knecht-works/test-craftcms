@@ -1,0 +1,35 @@
+{# Follows the OS colour scheme.
+
+   kit.css is dark by default and treats light as the opt-in `.kit-light`
+   class, which only redefines the `--kit-*` custom properties. `<html>`
+   carries that class statically, so a client without JS still gets the
+   readable light theme; the script below drops it whenever the OS asks for
+   dark, and keeps `color-scheme` in sync so native controls and scrollbars
+   follow along.
+
+   This has to stay inline and in the <head>: anything deferred paints the
+   light theme first and flashes. #}
+<script>
+  (function () {
+    var query = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function apply(isDark) {
+      var root = document.documentElement;
+      root.classList.toggle('kit-light', !isDark);
+      root.style.colorScheme = isDark ? 'dark' : 'light';
+    }
+
+    apply(query.matches);
+
+    // React to the OS flipping while the page is open.
+    if (query.addEventListener) {
+      query.addEventListener('change', function (event) {
+        apply(event.matches);
+      });
+    } else if (query.addListener) {
+      query.addListener(function (event) {
+        apply(event.matches);
+      });
+    }
+  })();
+</script>
