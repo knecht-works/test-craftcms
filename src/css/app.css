@@ -1,2 +1,17 @@
 @import "tailwindcss";
 @source "../../templates";
+
+/* Header links follow the theme instead of being pinned to black.
+
+   kit.css paints every link with the brand accent through
+   `.kit-body a:not(.kit-button)`, whose specificity (0,2,1) beats Tailwind's
+   preflight `a { color: inherit }` (0,0,1) whatever the load order — so simply
+   dropping the old `text-black!` utilities would turn the whole header green.
+   This selector sits one class higher at (0,3,1) and stays unlayered, so it
+   outranks both kit.css and Tailwind's layers.
+
+   `--kit-ink` is a token, not a literal: near-black on the light theme, white
+   on the dark one, so neither scheme loses. */
+.kit-body .site-header a:not(.kit-button) {
+  color: var(--kit-ink);
+}
