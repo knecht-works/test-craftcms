@@ -1,0 +1,28 @@
+{# Follow the operating system's colour scheme.
+
+   kit.css is dark by default: it defines the dark `--kit-*` tokens in `:root`
+   and treats light as the opt-in case via `.kit-light`, which does nothing but
+   redefine those custom properties. `kit-light` therefore sits statically on
+   `<html>` in the markup, so a client without JS still gets the readable light
+   theme, and the script below only takes it off when the OS asks for dark.
+
+   This must stay inline and in the `<head>`: deferring it would paint the light
+   theme and flash before switching. #}
+<script>
+  (function () {
+    var root = document.documentElement;
+    var dark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function apply(isDark) {
+      root.classList.toggle('kit-light', !isDark);
+      // Keep native UI (scrollbars, form controls, the language <select>) in sync.
+      root.style.colorScheme = isDark ? 'dark' : 'light';
+    }
+
+    apply(dark.matches);
+
+    dark.addEventListener('change', function (event) {
+      apply(event.matches);
+    });
+  })();
+</script>
