@@ -24,7 +24,8 @@ Requires [DDEV](https://ddev.readthedocs.io/en/stable/users/install/ddev-install
 ddev start                      # boot the containers
 ddev composer install           # install PHP dependencies
 cp .env.example .env            # then fill in CRAFT_APP_ID / CRAFT_SECURITY_KEY
-ddev craft install              # create the database and admin user
+ddev craft install              # create the database and admin user, or:
+ddev import-db --file=seed/db.sql.gz   # import the demo seed (admin / admin123)
 ddev npm install
 ddev npm run dev                # start the Vite dev server, or `npm run build`
 ```
