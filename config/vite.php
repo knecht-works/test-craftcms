@@ -5,7 +5,11 @@ use craft\helpers\App;
 return [
     'useDevServer'               => App::env('CRAFT_ENVIRONMENT') === 'dev',
     'manifestPath'               => '@webroot/dist/.vite/manifest.json',
-    'devServerPublic'            => 'https://test-craftcms.ddev.site:3000/',
+    // Under Knecht the browser reaches the dev server on its own origin,
+    // handed in as KNECHT_DEV_SERVER_URL; locally it is the ddev router URL.
+    'devServerPublic'            => App::env('KNECHT_DEV_SERVER_URL')
+        ? rtrim(App::env('KNECHT_DEV_SERVER_URL'), '/') . '/'
+        : 'https://test-craftcms.ddev.site:3000/',
     'serverPublic'               => App::env('PRIMARY_SITE_URL') . '/dist/',
     'errorEntry'                 => '',
     'cacheKeySuffix'             => '',
