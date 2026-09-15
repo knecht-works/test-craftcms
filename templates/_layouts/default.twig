@@ -10,26 +10,44 @@
   <meta name="robots" content="noindex,follow" />
   {{ craft.vite.script('src/js/app.js', false) }}
 </head>
-<body class="kit-body kit-light">
+<body class="kit-body">
+  <script>
+    (function () {
+      // Applied inline, before the rest of the body renders, so the stored
+      // theme choice is in effect immediately and there is no flash of the
+      // wrong mode (FOUC).
+      if (window.localStorage.getItem('kit-theme') === 'light') {
+        document.body.classList.add('kit-light');
+      }
+    })();
+  </script>
   <main class="kit-container">
     {% block main %}
       {% block navigation %}
         {%- set localizedEntries = entry.localized.eagerly().all()|index('site.id') -%}
 
         <div class="flex items-center justify-between">
-          <a href="{{ currentSite.baseUrl }}" class="flex items-center text-black!">
+          <a href="{{ currentSite.baseUrl }}" class="flex items-center kit-text-ink">
             <img class="h-10" src="https://knecht.works/styleguide/assets/knecht-head.svg" alt="Knecht">
             <span class="font-bold text-xl text-current">Knecht</span>
           </a>
           <nav class="flex gap-6 items-center font-bold">
             {% for navEntry in craft.entries.all() %}
-              <a href="{{ navEntry.getUrl() }}" class="text-black!">
+              <a href="{{ navEntry.getUrl() }}" class="kit-text-ink">
                 {{ navEntry.title }}
               </a>
             {% endfor %}
-            <a href="https://knecht.works" target="_blank" class="text-black!">
+            <a href="https://knecht.works" target="_blank" class="kit-text-ink">
               Knecht
             </a>
+            <button
+              type="button"
+              class="kit-button kit-button--ghost"
+              data-kit-theme-toggle
+              aria-label="{{ 'Toggle dark mode'|t }}"
+            >
+              <span data-kit-theme-label></span>
+            </button>
             <label for="language-switcher" class="sr-only">{{ 'Language'|t }}</label>
             <select id="language-switcher" class="cursor-pointer" aria-label="{{ 'Language'|t }}" onchange="window.location.href = this.value">
               {%- for site in craft.app.sites.allSites -%}
@@ -77,5 +95,31 @@
 
     {{ craft.insights.trackingScript() }}
   </main>
+  <script>
+    (function () {
+      // kit.js is loaded with `defer`, so wait for it (and the rest of the
+      // DOM) to be ready before wiring the toggle.
+      document.addEventListener('DOMContentLoaded', function () {
+        var toggle = document.querySelector('[data-kit-theme-toggle]');
+        var label = document.querySelector('[data-kit-theme-label]');
+        if (!toggle || !label || !window.KnechtKit) {
+          return;
+        }
+
+        function syncLabel() {
+          var isLight = document.body.classList.contains('kit-light');
+          label.textContent = isLight ? '{{ 'Dark mode'|t|e('js') }}' : '{{ 'Light mode'|t|e('js') }}';
+        }
+
+        toggle.addEventListener('click', function () {
+          var mode = window.KnechtKit.toggleTheme();
+          window.localStorage.setItem('kit-theme', mode);
+          syncLabel();
+        });
+
+        syncLabel();
+      });
+    })();
+  </script>
 </body>
 </html>
