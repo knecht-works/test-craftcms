@@ -24,5 +24,12 @@ export default ({ command }) => ({
     },
     port: 3000,
     strictPort: true,
+    // Craft's vendor/storage trees are PHP-only and irrelevant to the frontend
+    // build. Watching them anyway (Vite's default watcher only skips
+    // node_modules/.git) exhausts the host's inotify watch limit once vendor
+    // grows past a few thousand files, crash-looping the dev server.
+    watch: {
+      ignored: ['**/vendor/**', '**/storage/**'],
+    },
   },
 })
