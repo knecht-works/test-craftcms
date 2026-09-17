@@ -1,4 +1,4 @@
-dateModified: 1784717486
+dateModified: 1789668211
 email:
   fromEmail: hallo@knecht.works
   fromName: 'Knecht Works'
@@ -46,7 +46,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: F82G7YFGD7F93LDKLRL1AJ18
-    schemaVersion: 1.2.1
+    schemaVersion: 1.3.1
     settings:
       apiToken: null
       autoInjectDiscoveryTag: true
@@ -94,7 +94,7 @@ system:
   edition: pro
   live: true
   name: 'Knecht Works'
-  schemaVersion: 5.10.0.0
+  schemaVersion: 5.11.0.2
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false
