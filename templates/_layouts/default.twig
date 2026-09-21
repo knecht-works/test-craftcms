@@ -10,26 +10,42 @@
   <meta name="robots" content="noindex,follow" />
   {{ craft.vite.script('src/js/app.js', false) }}
 </head>
-<body class="kit-body kit-light">
+<body class="kit-body">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('kit-theme'); } catch (e) {}
+      var light = stored ? stored === 'light' : !window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.body.classList.toggle('kit-light', light);
+    })();
+  </script>
   <main class="kit-container">
     {% block main %}
       {% block navigation %}
         {%- set localizedEntries = entry.localized.eagerly().all()|index('site.id') -%}
 
         <div class="flex items-center justify-between">
-          <a href="{{ currentSite.baseUrl }}" class="flex items-center text-black!">
+          <a href="{{ currentSite.baseUrl }}" class="flex items-center">
             <img class="h-10" src="https://knecht.works/styleguide/assets/knecht-head.svg" alt="Knecht">
             <span class="font-bold text-xl text-current">Knecht</span>
           </a>
           <nav class="flex gap-6 items-center font-bold">
             {% for navEntry in craft.entries.all() %}
-              <a href="{{ navEntry.getUrl() }}" class="text-black!">
+              <a href="{{ navEntry.getUrl() }}">
                 {{ navEntry.title }}
               </a>
             {% endfor %}
-            <a href="https://knecht.works" target="_blank" class="text-black!">
+            <a href="https://knecht.works" target="_blank">
               Knecht
             </a>
+            <button
+              type="button"
+              id="theme-toggle"
+              class="kit-button kit-button--ghost"
+              aria-label="{{ 'Toggle dark mode'|t }}"
+            >
+              <span id="theme-toggle-icon" aria-hidden="true">🌙</span>
+            </button>
             <label for="language-switcher" class="sr-only">{{ 'Language'|t }}</label>
             <select id="language-switcher" class="cursor-pointer" aria-label="{{ 'Language'|t }}" onchange="window.location.href = this.value">
               {%- for site in craft.app.sites.allSites -%}
