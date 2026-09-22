@@ -1,0 +1,28 @@
+Fix: guard insights.js against running more than once on the same page.
+
+If craft.insights.trackingScript()/trackingScriptInline() is ever rendered
+twice on a page (e.g. added to a partial or widget in addition to the
+layout), the tracking script re-executes in full: pageviews, events, scroll
+depth, etc. get recorded multiple times and history.pushState gets
+double-wrapped, causing every future SPA navigation to double-fire.
+
+This adds a simple window flag so a second execution is a no-op.
+
+--- a/src/web/assets/src/js/insights.js
++++ b/src/web/assets/src/js/insights.js
+@@ -7,6 +7,15 @@
+ (function() {
+     'use strict';
+ 
++    // Guard against the script running more than once on the same page
++    // (e.g. accidentally included in both a layout and a partial/widget).
++    // Without this, pageviews, events, scroll depth, etc. would all be
++    // recorded multiple times and history.pushState would be double-wrapped.
++    if (window.__insightsInit) {
++        return;
++    }
++    window.__insightsInit = true;
++
+     // Configuration - can be overridden via window.insightsConfig
+     var config = window.insightsConfig || {};
+     var API = config.endpoint || '/actions/insights/track';

@@ -4,6 +4,7 @@
   "require": {
     "craftcms/ckeditor": "^5.6.1",
     "craftcms/cms": "^5.9.0",
+    "cweagans/composer-patches": "^1.7",
     "nystudio107/craft-seomatic": "^5.1.21",
     "nystudio107/craft-vite": "^5.0.1",
     "samuelreichor/craft-co-pilot": "^1.0.5",
@@ -19,7 +20,8 @@
   "config": {
     "allow-plugins": {
       "craftcms/plugin-installer": true,
-      "yiisoft/yii2-composer": true
+      "yiisoft/yii2-composer": true,
+      "cweagans/composer-patches": true
     },
     "sort-packages": true,
     "optimize-autoloader": true
@@ -35,5 +37,12 @@
       "url": "https://composer.craftcms.com",
       "canonical": false
     }
-  ]
+  ],
+  "extra": {
+    "patches": {
+      "samuelreichor/craft-insights": {
+        "Guard insights.js against firing multiple times if the tracking script is accidentally included more than once on a page (CC-20)": "patches/craft-insights-double-fire-guard.patch"
+      }
+    }
+  }
 }

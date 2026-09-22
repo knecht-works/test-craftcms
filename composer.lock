@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ff3196ded32294f90b2fba12ccb7928",
+    "content-hash": "cab1307d955a94c4b2ff55faa1cbd807",
     "packages": [
         {
             "name": "amphp/amp",
@@ -1726,6 +1726,40 @@
                 "yii2"
             ],
             "time": "2015-01-27T10:53:51+00:00"
+        },
+        {
+            "name": "cweagans/composer-patches",
+            "version": "1.7.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
+                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=5.3.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "cweagans\\Composer\\Patches"
+            },
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a way to patch Composer packages.",
+            "time": "2022-12-20T22:53:13+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -6342,11 +6376,11 @@
         },
         {
             "name": "samuelreichor/craft-insights",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/samuelreichor/craft-insights/zipball/bfb9d23843b8bf24a4b31a25c684af80a5ff3c51",
-                "reference": "bfb9d23843b8bf24a4b31a25c684af80a5ff3c51",
+                "url": "https://api.github.com/repos/samuelreichor/craft-insights/zipball/a72980d93c7458541946d12f87fc21a5c67d9ab1",
+                "reference": "a72980d93c7458541946d12f87fc21a5c67d9ab1",
                 "shasum": ""
             },
             "require": {
@@ -6384,7 +6418,7 @@
                 "docs": "https://samuelreichor.at/libraries/craft-insights",
                 "rss": "https://github.com/samuelreichor/craft-insights/releases.atom"
             },
-            "time": "2026-05-16T12:14:41+00:00"
+            "time": "2026-08-31T06:57:09+00:00"
         },
         {
             "name": "samuelreichor/craft-llmify",
