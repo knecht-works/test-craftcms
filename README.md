@@ -39,3 +39,7 @@ ddev npm run dev                # start the Vite dev server, or `npm run build`
 | EN               | `https://en.craftcms.ddev.site`         |
 | DE               | `https://de.craftcms.ddev.site`         |
 | Control panel    | `https://cp.craftcms.ddev.site/admin`   |
+
+## Maintenance
+
+PHP and npm dependencies are kept up to date to pick up security patches; see `composer.lock` / `package-lock.json` for the current pinned versions.
