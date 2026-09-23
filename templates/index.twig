@@ -8,8 +8,15 @@
   <script src="https://knecht.works/styleguide/kit.js" defer></script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="robots" content="noindex,follow" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var isLight = saved ? saved === 'light' : !window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('kit-light', isLight);
+    })();
+  </script>
 </head>
-<body class="kit-body kit-light">
+<body class="kit-body">
   <main class="kit-container kit-stack">
 
     <span class="kit-badge kit-mb-4">craftcms-test-e2e</span>
