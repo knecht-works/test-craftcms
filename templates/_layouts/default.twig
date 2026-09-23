@@ -9,8 +9,25 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="robots" content="noindex,follow" />
   {{ craft.vite.script('src/js/app.js', false) }}
+  <script>
+    (function () {
+      var saved = null;
+      try {
+        saved = window.localStorage.getItem('theme');
+      } catch (e) {}
+      var isLight = saved ? saved === 'light' : window.matchMedia('(prefers-color-scheme: light)').matches;
+      if (isLight) {
+        document.documentElement.classList.add('kit-light-pref');
+      }
+    })();
+  </script>
 </head>
-<body class="kit-body kit-light">
+<body class="kit-body">
+  <script>
+    if (document.documentElement.classList.contains('kit-light-pref')) {
+      document.body.classList.add('kit-light');
+    }
+  </script>
   <main class="kit-container">
     {% block main %}
       {% block navigation %}
@@ -30,6 +47,9 @@
             <a href="https://knecht.works" target="_blank" class="text-black!">
               Knecht
             </a>
+            <button type="button" id="theme-toggle" class="cursor-pointer text-black!" aria-label="{{ 'Toggle dark mode'|t }}">
+              <span id="theme-toggle-icon" aria-hidden="true">🌙</span>
+            </button>
             <label for="language-switcher" class="sr-only">{{ 'Language'|t }}</label>
             <select id="language-switcher" class="cursor-pointer" aria-label="{{ 'Language'|t }}" onchange="window.location.href = this.value">
               {%- for site in craft.app.sites.allSites -%}
@@ -77,5 +97,40 @@
 
     {{ craft.insights.trackingScript() }}
   </main>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('theme-toggle');
+      var icon = document.getElementById('theme-toggle-icon');
+      var mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+
+      function updateIcon() {
+        var isLight = document.body.classList.contains('kit-light');
+        icon.textContent = isLight ? '☀️' : '🌙';
+      }
+
+      updateIcon();
+
+      toggle.addEventListener('click', function () {
+        var theme = window.KnechtKit.toggleTheme();
+        try {
+          window.localStorage.setItem('theme', theme);
+        } catch (e) {}
+        updateIcon();
+      });
+
+      mediaQuery.addEventListener('change', function (event) {
+        var saved = null;
+        try {
+          saved = window.localStorage.getItem('theme');
+        } catch (e) {}
+        if (saved) {
+          return;
+        }
+        window.KnechtKit.toggleTheme(event.matches);
+        updateIcon();
+      });
+    })();
+  </script>
 </body>
 </html>
