@@ -9,8 +9,22 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="robots" content="noindex,follow" />
   {{ craft.vite.script('src/js/app.js', false) }}
+  <script>
+    (function () {
+      var saved = null
+      try {
+        saved = localStorage.getItem('kit-theme')
+      } catch (e) {}
+      var isLight = saved
+        ? saved === 'light'
+        : window.matchMedia('(prefers-color-scheme: light)').matches
+      if (isLight) {
+        document.body.classList.add('kit-light')
+      }
+    })()
+  </script>
 </head>
-<body class="kit-body kit-light">
+<body class="kit-body">
   <main class="kit-container">
     {% block main %}
       {% block navigation %}
@@ -40,6 +54,14 @@
                 {%- endif -%}
               {%- endfor -%}
             </select>
+            <button
+              type="button"
+              id="theme-toggle"
+              class="cursor-pointer text-black!"
+              aria-label="{{ 'Toggle dark mode'|t }}"
+            >
+              <span data-theme-icon>🌙</span>
+            </button>
           </nav>
         </div>
       {% endblock navigation %}
