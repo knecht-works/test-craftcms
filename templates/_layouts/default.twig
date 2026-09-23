@@ -8,6 +8,13 @@
   <script src="https://knecht.works/styleguide/kit.js" defer></script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="robots" content="noindex,follow" />
+  {% if craft.vite.devServerRunning() %}
+    {# The Vite dev server only injects CSS via JS once app.js has executed, which
+       causes a flash of unstyled content on every navigation. Requesting the CSS
+       file directly as a stylesheet link makes the dev server return real CSS and
+       loads it render-blocking, same as a production build. #}
+    <link rel="stylesheet" href="{{ craft.vite.asset('src/css/app.css') }}">
+  {% endif %}
   {{ craft.vite.script('src/js/app.js', false) }}
 </head>
 <body class="kit-body kit-light">
