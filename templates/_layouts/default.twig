@@ -8,6 +8,9 @@
   <script src="https://knecht.works/styleguide/kit.js" defer></script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="robots" content="noindex,follow" />
+  {% if craft.vite.devServerRunning() %}
+    <link rel="stylesheet" href="{{ craft.vite.asset('src/css/app.css') }}">
+  {% endif %}
   {{ craft.vite.script('src/js/app.js', false) }}
 </head>
 <body class="kit-body kit-light">
