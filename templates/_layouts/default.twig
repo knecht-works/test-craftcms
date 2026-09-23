@@ -9,25 +9,39 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="robots" content="noindex,follow" />
   {{ craft.vite.script('src/js/app.js', false) }}
+  <script>
+    (function () {
+      var saved = null
+      try {
+        saved = localStorage.getItem('kit-theme')
+      } catch (e) {}
+      var isLight = saved
+        ? saved === 'light'
+        : window.matchMedia('(prefers-color-scheme: light)').matches
+      if (isLight) {
+        document.body.classList.add('kit-light')
+      }
+    })()
+  </script>
 </head>
-<body class="kit-body kit-light">
+<body class="kit-body">
   <main class="kit-container">
     {% block main %}
       {% block navigation %}
         {%- set localizedEntries = entry.localized.eagerly().all()|index('site.id') -%}
 
         <div class="flex items-center justify-between">
-          <a href="{{ currentSite.baseUrl }}" class="flex items-center text-black!">
+          <a href="{{ currentSite.baseUrl }}" class="flex items-center" style="color: var(--kit-ink)">
             <img class="h-10" src="https://knecht.works/styleguide/assets/knecht-head.svg" alt="Knecht">
             <span class="font-bold text-xl text-current">Knecht</span>
           </a>
           <nav class="flex gap-6 items-center font-bold">
             {% for navEntry in craft.entries.all() %}
-              <a href="{{ navEntry.getUrl() }}" class="text-black!">
+              <a href="{{ navEntry.getUrl() }}" style="color: var(--kit-ink)">
                 {{ navEntry.title }}
               </a>
             {% endfor %}
-            <a href="https://knecht.works" target="_blank" class="text-black!">
+            <a href="https://knecht.works" target="_blank" style="color: var(--kit-ink)">
               Knecht
             </a>
             <label for="language-switcher" class="sr-only">{{ 'Language'|t }}</label>
@@ -40,6 +54,15 @@
                 {%- endif -%}
               {%- endfor -%}
             </select>
+            <button
+              type="button"
+              id="theme-toggle"
+              class="cursor-pointer"
+              style="color: var(--kit-ink)"
+              aria-label="{{ 'Toggle dark mode'|t }}"
+            >
+              <span data-theme-icon>🌙</span>
+            </button>
           </nav>
         </div>
       {% endblock navigation %}
