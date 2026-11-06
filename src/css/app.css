@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @source "../../templates";
+
+/* Nav links set color via inline style (see styles.md), so the hover color
+   needs !important to win over that inline style. */
+.nav-link:hover {
+  color: var(--kit-accent-strong) !important;
+}
