@@ -24,17 +24,17 @@
         {%- set localizedEntries = entry.localized.eagerly().all()|index('site.id') -%}
 
         <div class="flex items-center justify-between">
-          <a href="{{ currentSite.baseUrl }}" class="flex items-center text-black!">
+          <a href="{{ currentSite.baseUrl }}" class="flex items-center" style="color: var(--kit-ink)">
             <img class="h-10" src="https://knecht.works/styleguide/assets/knecht-head.svg" alt="Knecht">
             <span class="font-bold text-xl text-current">Knecht</span>
           </a>
           <nav class="flex gap-6 items-center font-bold">
             {% for navEntry in craft.entries.all() %}
-              <a href="{{ navEntry.getUrl() }}" class="text-black!">
+              <a href="{{ navEntry.getUrl() }}" style="color: var(--kit-ink)">
                 {{ navEntry.title }}
               </a>
             {% endfor %}
-            <a href="https://knecht.works" target="_blank" class="text-black!">
+            <a href="https://knecht.works" target="_blank" style="color: var(--kit-ink)">
               Knecht
             </a>
             <button id="theme-toggle" type="button" class="theme-toggle" aria-label="{{ 'Toggle color theme'|t }}">
