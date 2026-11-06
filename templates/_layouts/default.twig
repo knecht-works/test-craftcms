@@ -10,7 +10,14 @@
   <meta name="robots" content="noindex,follow" />
   {{ craft.vite.script('src/js/app.js', false) }}
 </head>
-<body class="kit-body kit-light">
+<body class="kit-body">
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var light = stored ? stored === 'light' : !window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.body.classList.toggle('kit-light', light);
+    })();
+  </script>
   <main class="kit-container">
     {% block main %}
       {% block navigation %}
@@ -30,6 +37,9 @@
             <a href="https://knecht.works" target="_blank" class="text-black!">
               Knecht
             </a>
+            <button id="theme-toggle" type="button" class="theme-toggle" aria-label="{{ 'Toggle color theme'|t }}">
+              <span data-theme-icon aria-hidden="true"></span>
+            </button>
             <label for="language-switcher" class="sr-only">{{ 'Language'|t }}</label>
             <select id="language-switcher" class="cursor-pointer" aria-label="{{ 'Language'|t }}" onchange="window.location.href = this.value">
               {%- for site in craft.app.sites.allSites -%}
