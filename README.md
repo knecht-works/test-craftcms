@@ -39,6 +39,7 @@ ddev npm run dev                # start the Vite dev server, or `npm run build`
 | EN               | `https://en.craftcms.ddev.site`         |
 | DE               | `https://de.craftcms.ddev.site`         |
 | Control panel    | `https://cp.craftcms.ddev.site/admin`   |
+
 ## Frontend
 
 Styles live in `src/css/app.css` (Tailwind v4) on top of the remote Knecht styleguide kit. Run `ddev npm run build` after changing Tailwind utilities.
