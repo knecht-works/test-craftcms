@@ -1,2 +1,11 @@
 @import "tailwindcss";
 @source "../../templates";
+
+.nav-link {
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--kit-accent-strong) !important;
+  text-decoration: underline;
+}
