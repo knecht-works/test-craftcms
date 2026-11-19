@@ -39,3 +39,5 @@ ddev npm run dev                # start the Vite dev server, or `npm run build`
 | EN               | `https://en.craftcms.ddev.site`         |
 | DE               | `https://de.craftcms.ddev.site`         |
 | Control panel    | `https://cp.craftcms.ddev.site/admin`   |
+
+Please read our Code of Conduct before contributing.
