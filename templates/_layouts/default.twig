@@ -23,11 +23,11 @@
           </a>
           <nav class="flex gap-6 items-center font-bold">
             {% for navEntry in craft.entries.all() %}
-              <a href="{{ navEntry.getUrl() }}" class="text-black!">
+              <a href="{{ navEntry.getUrl() }}" class="text-black! hover:underline focus-visible:underline">
                 {{ navEntry.title }}
               </a>
             {% endfor %}
-            <a href="https://knecht.works" target="_blank" class="text-black!">
+            <a href="https://knecht.works" target="_blank" class="text-black! hover:underline focus-visible:underline">
               Knecht
             </a>
             <label for="language-switcher" class="sr-only">{{ 'Language'|t }}</label>
