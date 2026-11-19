@@ -39,3 +39,6 @@ ddev npm run dev                # start the Vite dev server, or `npm run build`
 | EN               | `https://en.craftcms.ddev.site`         |
 | DE               | `https://de.craftcms.ddev.site`         |
 | Control panel    | `https://cp.craftcms.ddev.site/admin`   |
+## Contributing
+
+Open an issue first. Then open a pull request against `main`.
