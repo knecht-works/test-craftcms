@@ -1,4 +1,4 @@
-dateModified: 1784717486
+dateModified: 1795190811
 email:
   fromEmail: hallo@knecht.works
   fromName: 'Knecht Works'
@@ -94,7 +94,7 @@ system:
   edition: pro
   live: true
   name: 'Knecht Works'
-  schemaVersion: 5.10.0.0
+  schemaVersion: 5.12.0.2
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false
