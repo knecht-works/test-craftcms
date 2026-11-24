@@ -3,33 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Craftcms Test | Knecht</title>
+  <title>Hawara du geile drecksau des is lang</title>
   <link rel="stylesheet" href="https://knecht.works/styleguide/kit.css">
   <script src="https://knecht.works/styleguide/kit.js" defer></script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="robots" content="noindex,follow" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      var light = t ? t === 'light' : window.matchMedia('(prefers-color-scheme: light)').matches;
+      document.documentElement.classList.toggle('kit-light', light);
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.toggle('kit-light', light);
+      });
+    })();
+  </script>
   {{ craft.vite.script('src/js/app.js', false) }}
 </head>
-<body class="kit-body kit-light">
+<body class="kit-body">
   <main class="kit-container">
     {% block main %}
       {% block navigation %}
         {%- set localizedEntries = entry.localized.eagerly().all()|index('site.id') -%}
 
         <div class="flex items-center justify-between">
-          <a href="{{ currentSite.baseUrl }}" class="flex items-center text-black!">
+          <a href="{{ currentSite.baseUrl }}" class="flex items-center text-current!">
             <img class="h-10" src="https://knecht.works/styleguide/assets/knecht-head.svg" alt="Knecht">
             <span class="font-bold text-xl text-current">Knecht</span>
           </a>
           <nav class="flex gap-6 items-center font-bold">
             {% for navEntry in craft.entries.all() %}
-              <a href="{{ navEntry.getUrl() }}" class="text-black!">
+              <a href="{{ navEntry.getUrl() }}" class="text-current!">
                 {{ navEntry.title }}
               </a>
             {% endfor %}
-            <a href="https://knecht.works" target="_blank" class="text-black!">
+            <a href="https://knecht.works" target="_blank" class="text-current!">
               Knecht
             </a>
+            <button type="button" id="theme-toggle" class="cursor-pointer" aria-label="{{ 'Toggle dark mode'|t }}" onclick="var l = document.body.classList.toggle('kit-light'); localStorage.setItem('theme', l ? 'light' : 'dark');">
+              ◐
+            </button>
             <label for="language-switcher" class="sr-only">{{ 'Language'|t }}</label>
             <select id="language-switcher" class="cursor-pointer" aria-label="{{ 'Language'|t }}" onchange="window.location.href = this.value">
               {%- for site in craft.app.sites.allSites -%}
