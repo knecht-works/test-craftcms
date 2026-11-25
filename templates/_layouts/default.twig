@@ -72,6 +72,10 @@
 
       {% endllmify %}
       {% block footer %}
+        <footer class="mt-20 flex items-center justify-between">
+          <span>&copy; {{ now|date('Y') }}</span>
+          <a href="/impressum">Impressum</a>
+        </footer>
       {% endblock footer %}
     {% endblock main %}
 
