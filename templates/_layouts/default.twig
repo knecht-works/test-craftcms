@@ -75,7 +75,7 @@
         {%- set isDe = currentSite.language starts with 'de' -%}
         <footer class="mt-20 flex items-center justify-between bg-[#222] px-4 py-6 text-white">
           <span>&copy; {{ now|date('Y') }} Test</span>
-          <a href="{{ isDe ? '/barrierefreiheit' : '/en/accessibility' }}" class="rounded-sm px-1 text-[#0055FF]! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFA500]">
+          <a href="{{ isDe ? '/barrierefreiheit' : '/en/accessibility' }}" aria-label="Erklaerung zur Barrierefreiheit" class="rounded-sm px-1 text-[#0055FF]! focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFA500]">
             {{ isDe ? 'Barrierefreiheit' : 'Accessibility' }}
           </a>
           <a href="{{ isDe ? '/kontakt' : '/en/contact' }}" class="text-white!">
